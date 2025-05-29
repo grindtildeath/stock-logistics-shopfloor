@@ -26,7 +26,9 @@ class StockPicking(models.Model):
     is_shopfloor_created = fields.Boolean()
 
     @api.depends(
-        "move_line_ids", "move_line_ids.reserved_qty", "move_line_ids.product_id.weight"
+        "move_line_ids",
+        "move_line_ids.quantity_product_uom",
+        "move_line_ids.product_id.weight",
     )
     def _compute_picking_info(self):
         for item in self:
@@ -47,7 +49,7 @@ class StockPicking(models.Model):
     def _calc_weight(self):
         weight = 0.0
         for move_line in self.mapped("move_line_ids"):
-            weight += move_line.reserved_qty * move_line.product_id.weight
+            weight += move_line.quantity_product_uom * move_line.product_id.weight
         return weight
 
     def _check_move_lines_map_quant_package(self, package):
@@ -57,7 +59,7 @@ class StockPicking(models.Model):
         )
         # if we set a qty_done on any line, it's picked, we don't want
         # to change it in any case, so we ignore the package level
-        if any(pack_move_lines.mapped("qty_done")):
+        if any(pack_move_lines.mapped("picked")):
             return False
         # if we already changed the destination package, do not create
         # a new package level

@@ -218,7 +218,8 @@ class DataAction(Component):
         return [
             "id",
             "qty_done",
-            "reserved_uom_qty:quantity",
+            # FIXME
+            "quantity",  # was reserved_uom_qty
             ("product_id:product", self._product_parser),
             ("lot_id:lot", self._lot_parser),
             ("location_id:location_src", self._location_parser),
@@ -227,7 +228,8 @@ class DataAction(Component):
                 "move_id:priority",
                 lambda rec, fname: rec.move_id.priority or "",
             ),
-            "progress",
+            # TODO: progress is not available on move lines anymore, what to do for UI?
+            # "progress",
         ]
 
     @ensure_model("stock.move")
@@ -243,6 +245,7 @@ class DataAction(Component):
     def _move_parser(self):
         return [
             "id",
+            # FIXME: field gone... use a computed on to not change UI?
             "quantity_done",
             "product_uom_qty:quantity",
             ("product_id:product", self._product_parser),
@@ -358,7 +361,7 @@ class DataAction(Component):
         operations_done = 0
         for line in lines:
             operations_done += line.qty_done
-            operations_to_do += line.reserved_uom_qty - line.qty_done
+            operations_to_do += line.quantity - line.qty_done
         return {
             "done": operations_done,
             "to_do": operations_to_do,

@@ -1,7 +1,7 @@
 # Copyright 2020 Camptocamp SA (http://www.camptocamp.com)
 # Copyright 2022 Jacques-Etienne Baudoux (BCIM) <je@bcim.be>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
-from odoo import _, models
+from odoo import models
 from odoo.tools.float_utils import float_compare
 
 
@@ -80,7 +80,7 @@ class StockMove(models.Model):
             new_picking.id,
             new_picking.name,
         )
-        message = (_("The split order {} has been created.")).format(link)
+        message = (self.env._("The split order {} has been created.")).format(link)
         picking.message_post(body=message)
         self.picking_id = new_picking.id
         self.package_level_id.picking_id = new_picking.id
