@@ -29,6 +29,8 @@ class StockMoveLine(models.Model):
     # allow domain on picking_id.xxx without too much perf penalty
     picking_id = fields.Many2one(auto_join=True)
 
+    is_shopfloor_created = fields.Boolean()
+
     def _split_partial_quantity(self):
         """Create new move line for the quantity remaining to do
 
