@@ -217,8 +217,7 @@ class DataAction(Component):
     def _move_line_parser(self):
         return [
             "id",
-            "picked",
-            "quantity_picked",
+            "qty_picked:qty_done",
             "quantity",
             ("product_id:product", self._product_parser),
             ("lot_id:lot", self._lot_parser),
@@ -245,8 +244,9 @@ class DataAction(Component):
     def _move_parser(self):
         return [
             "id",
-            # FIXME: field gone... use a computed on to not change UI?
-            "quantity_done",
+            # FIXME: Not sure it's a good idea to have quantity mapped to quantity_done
+            #  and product_uom_qty to quantity
+            "quantity:quantity_done",
             "product_uom_qty:quantity",
             ("product_id:product", self._product_parser),
             ("location_id:location_src", self._location_parser),
@@ -360,8 +360,8 @@ class DataAction(Component):
         operations_to_do = 0
         operations_done = 0
         for line in lines:
-            operations_done += line.quantity_picked
-            operations_to_do += line.quantity
+            operations_done += line.qty_picked
+            operations_to_do += line.quantity - line.qty_picked
         return {
             "done": operations_done,
             "to_do": operations_to_do,
