@@ -38,21 +38,23 @@ class StockMoveLine(models.Model):
         """
         self.ensure_one()
         rounding = self.product_uom_id.rounding
-        if float_is_zero(self.qty_done, precision_rounding=rounding):
+        if float_is_zero(self.qty_picked, precision_rounding=rounding):
             return self.browse()
         compare = float_compare(
-            self.qty_done, self.quantity, precision_rounding=rounding
+            self.qty_picked, self.quantity, precision_rounding=rounding
         )
         qty_lesser = compare == -1
         qty_greater = compare == 1
         assert not qty_greater, "Quantity done cannot exceed quantity to do"
         if qty_lesser:
-            remaining = self.quantity - self.qty_done
-            new_line = self.copy({"quantity": remaining, "qty_done": 0})
+            remaining = self.quantity - self.qty_picked
+            new_line = self.copy(
+                {"quantity": remaining, "qty_picked": 0, "picked": False}
+            )
             # if we didn't bypass reservation update, the quant reservation
             # would be reduced as much as the deduced quantity, which is wrong
             # as we only moved the quantity to a new move line
-            self.with_context(bypass_reservation_update=True).quantity = self.qty_done
+            self.with_context(bypass_reservation_update=True).quantity = self.qty_picked
             return new_line
         return self.browse()
 
@@ -309,7 +311,7 @@ class StockMoveLine(models.Model):
     def shopfloor_postpone(self, *recordsets):
         """
         Specific behavior for move lines.
-        As we need to reset qty_done.
+        As we need to reset the quantity picked.
 
         """
         res = super().shopfloor_postpone(*recordsets)

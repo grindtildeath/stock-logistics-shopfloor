@@ -117,7 +117,7 @@ class StockAction(Component):
         check_user=False,
         split=True,
     ):
-        """Set the qty_done and extract lines in new order"""
+        """Set the picked quantity and extract lines in new order"""
         user = user or self.env.user
         if check_user:
             picking_users = move_lines.picking_id.user_id
@@ -126,11 +126,10 @@ class StockAction(Component):
                     _("Someone is already working on these transfers")
                 )
         for line in move_lines:
-            qty_done = quantity if quantity is not None else line.quantity
-            line.qty_done = qty_done
             if split:
                 line._split_partial_quantity()
             data = {
+                "picked": True,
                 "shopfloor_user_id": user.id,
             }
             if package:
