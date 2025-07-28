@@ -12,6 +12,6 @@
     "website": "https://github.com/OCA/wms",
     "category": "Warehouse Management",
     "license": "AGPL-3",
-    "installable": True,
+    "installable": False,
     "data": ["templates/assets.xml"],
 }
