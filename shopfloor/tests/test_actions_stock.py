@@ -34,6 +34,8 @@ class TestActionsStock(CommonCase):
         # all lines (two) are picked
         self.stock.mark_move_line_as_picked(lines_picked)
         self.assertTrue(self.picking.user_id)
+        self.assertEqual(lines_picked.mapped("picked"), [True, True])
+        self.assertEqual(lines_picked.mapped("qty_picked"), [10.0, 10.0])
         # unpick one line
         line_unpicked = lines_picked[0]
         self.stock.unmark_move_line_as_picked(line_unpicked)
@@ -45,3 +47,5 @@ class TestActionsStock(CommonCase):
         self.assertTrue(self.picking.move_line_ids.shopfloor_user_id)
         self.assertFalse(picking_not_assigned.move_line_ids.shopfloor_user_id)
         self.assertFalse(picking_not_assigned.user_id)
+        self.assertEqual(lines_picked.mapped("picked"), [False, True])
+        self.assertEqual(lines_picked.mapped("qty_picked"), [0.0, 10.0])
