@@ -129,13 +129,13 @@ class StockAction(Component):
             if split:
                 line._split_partial_quantity()
             data = {
-                "picked": True,
                 "shopfloor_user_id": user.id,
+                "qty_picked": quantity or line.quantity,
             }
             if package:
                 # destination package is set to the scanned one
                 data["result_package_id"] = package.id
-            line.write(data)
+            line.update(data)
         values_assigned = {
             "user_id": user.id,
             "printed": True,
