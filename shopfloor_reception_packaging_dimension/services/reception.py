@@ -36,8 +36,6 @@ class Reception(Component):
                 [("height", "=", False)],
                 [("weight", "=", 0)],
                 [("weight", "=", False)],
-                [("qty", "=", 0)],
-                [("qty", "=", False)],
                 [("barcode", "=", False)],
             ]
         )
@@ -51,7 +49,11 @@ class Reception(Component):
             ("id", ">=", next_packaging_id),
         ]
         domain = expression.AND([domain_packaging_id, domain_dimension])
-        return self.env["product.packaging"].search(domain, order="id", limit=1)
+        packagings = self.env["product.packaging"].search(domain, order="id")
+        for packaging in packagings:
+            if packaging._shopfloor_need_dimension_collection():
+                return packaging
+        return self.env["product.packaging"].browse()
 
     def _response_for_set_packaging_dimension(
         self, picking, line, packaging, message=None
@@ -93,7 +95,6 @@ class Reception(Component):
         elif not cancel and self._check_dimension_to_update(kwargs):
             self._update_packaging_dimension(packaging, kwargs)
             message = self.msg_store.packaging_dimension_updated(packaging)
-
         if packaging:
             next_packaging = self._get_next_packaging_to_set_dimension(
                 selected_line.product_id, packaging
