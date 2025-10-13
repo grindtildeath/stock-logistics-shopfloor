@@ -922,6 +922,12 @@ msgstr ""
 
 #. module: shopfloor
 #. odoo-python
+#: code:addons/shopfloor/tests/test_single_pack_transfer.py:0
+msgid "Package %(package)s cannot be reserved in %(location)s%(extra)s."
+msgstr ""
+
+#. module: shopfloor
+#. odoo-python
 #: code:addons/shopfloor/actions/message.py:0
 msgid ""
 "Package %(package_name)s cannot be picked, already moved by transfer "
