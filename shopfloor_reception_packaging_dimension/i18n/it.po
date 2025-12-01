@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-09-01 09:42+0000\n"
+"PO-Revision-Date: 2025-12-01 11:11+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -19,7 +19,7 @@ msgstr ""
 #. module: shopfloor_reception_packaging_dimension
 #: model:ir.model.fields,field_description:shopfloor_reception_packaging_dimension.field_product_packaging_level__shopfloor_collect_barcode
 msgid "Collect Barcode"
-msgstr ""
+msgstr "Raccogli codice a barre"
 
 #. module: shopfloor_reception_packaging_dimension
 #: model:ir.model.fields,field_description:shopfloor_reception_packaging_dimension.field_product_packaging_level__shopfloor_collect_height
@@ -85,6 +85,8 @@ msgid ""
 "When marked, shopfloor will require to set dimensions during reception if "
 "undefined on the packaging"
 msgstr ""
+"Quando selezionata, il reparto richiederà di impostare le dimensioni al "
+"ricevimento se non definite nell'imballo"
 
 #~ msgid ""
 #~ "When marked, shopfloor will require to set this dimension during "
