@@ -48,3 +48,21 @@ msgstr ""
 #: model:stock.picking.type,name:shopfloor_reception.picking_type_reception_demo
 msgid "Reception"
 msgstr ""
+
+#. module: shopfloor_reception
+#. odoo-python
+#: code:addons/shopfloor_reception/actions/messages.py:0
+msgid "The package type could not be found"
+msgstr ""
+
+#. module: shopfloor_reception
+#. odoo-python
+#: code:addons/shopfloor_reception/actions/messages.py:0
+msgid "The package type is not valid"
+msgstr ""
+
+#. module: shopfloor_reception
+#. odoo-python
+#: code:addons/shopfloor_reception/actions/messages.py:0
+msgid "The package type was successfully changed"
+msgstr ""
