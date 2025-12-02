@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-08-16 13:26+0000\n"
+"PO-Revision-Date: 2025-12-02 15:42+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -31,7 +31,7 @@ msgstr ""
 #. odoo-python
 #: code:addons/shopfloor_reception/models/shopfloor_menu.py:0
 msgid "Filter Today Pickings is not allowed for menu  %s."
-msgstr ""
+msgstr "Il filtro dei prelievi odierni non è consentito per il menu --%s."
 
 #. module: shopfloor_reception
 #: model:ir.model.fields,field_description:shopfloor_reception.field_shopfloor_menu__filter_today_scheduled_pickings
@@ -59,19 +59,19 @@ msgstr "Ricezione"
 #. odoo-python
 #: code:addons/shopfloor_reception/actions/messages.py:0
 msgid "The package type could not be found"
-msgstr ""
+msgstr "Il tipo collo non può essere trovato"
 
 #. module: shopfloor_reception
 #. odoo-python
 #: code:addons/shopfloor_reception/actions/messages.py:0
 msgid "The package type is not valid"
-msgstr ""
+msgstr "Il tipo collo non è valido"
 
 #. module: shopfloor_reception
 #. odoo-python
 #: code:addons/shopfloor_reception/actions/messages.py:0
 msgid "The package type was successfully changed"
-msgstr ""
+msgstr "Il tipo collo è stato cambiato con successo"
 
 #, python-format
 #~ msgid "Filter Today Pickings is not allowed for menu {}."
