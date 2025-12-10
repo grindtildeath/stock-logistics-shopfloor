@@ -3,6 +3,8 @@
 
 from odoo_test_helper import FakeModelLoader
 
+from odoo.tools import mute_logger
+
 from odoo.addons.shopfloor_reception.tests.common import CommonCase
 
 
@@ -146,6 +148,7 @@ class TestSetPackDimension(CommonCase):
             message=self.msg_store.measuring_device_already_in_use(self.device),
         )
 
+    @mute_logger("odoo.addons.stock_measuring_device.models.measuring_device")
     def test_select_device__ok(self):
         picking = self.setup_picking()
         line = picking.move_line_ids[0]
