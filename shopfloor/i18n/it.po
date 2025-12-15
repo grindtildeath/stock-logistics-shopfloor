@@ -804,6 +804,12 @@ msgid "Move already processed."
 msgstr "Mvimento già elaborato."
 
 #. module: shopfloor
+#. odoo-python
+#: code:addons/shopfloor/actions/message.py:0
+msgid "Move validation failed. %s"
+msgstr ""
+
+#. module: shopfloor
 #: model:ir.model.fields,field_description:shopfloor.field_shopfloor_menu__multiple_move_single_pack_is_possible
 msgid "Multiple Move Single Pack Is Possible"
 msgstr "È possibile avere movimenti multipli per singolo pacco"
@@ -1027,7 +1033,8 @@ msgstr "Collo %(old_pack_name)s sostituito dal collo %(new_pack_name)s."
 #. odoo-python
 #: code:addons/shopfloor/tests/test_single_pack_transfer.py:0
 msgid "Package %(package)s cannot be reserved in %(location)s%(extra)s."
-msgstr "Il collo %(package)s non può essere prenotato in %(location)s%(extra)s."
+msgstr ""
+"Il collo %(package)s non può essere prenotato in %(location)s%(extra)s."
 
 #. module: shopfloor
 #. odoo-python
