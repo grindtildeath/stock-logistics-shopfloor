@@ -8,7 +8,7 @@
     "version": "18.0.1.4.0",
     "depends": ["shopfloor", "shopfloor_mobile_base"],
     "author": "Camptocamp, BCIM, Akretion, Odoo Community Association (OCA)",
-    "maintainers": ["simahawk"],
+    "maintainers": ["simahawk", "jbaudoux", "TDu", "mmequignon"],
     "website": "https://github.com/OCA/stock-logistics-shopfloor",
     "category": "Warehouse Management",
     "license": "AGPL-3",
