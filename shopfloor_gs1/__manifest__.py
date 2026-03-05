@@ -10,7 +10,7 @@
     "category": "Inventory",
     "website": "https://github.com/OCA/stock-logistics-shopfloor",
     "author": "Camptocamp, Odoo Community Association (OCA)",
-    "maintainers": ["simahawk", "sebalix"],
+    "maintainers": ["simahawk", "sebalix", "jbaudoux", "TDu", "mmequignon"],
     "license": "AGPL-3",
     "depends": ["shopfloor"],
     "external_dependencies": {
